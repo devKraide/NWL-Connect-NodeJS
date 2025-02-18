@@ -1,11 +1,11 @@
 import { fastify } from "fastify";
 import { fastifyCors } from "@fastify/cors";
-import { 
+import {
   validatorCompiler,
   serializerCompiler,
   ZodTypeProvider
-} from "fastify-type-provider-zod"; 
-import { z } from "zod";	
+} from "fastify-type-provider-zod";
+import { z } from "zod";
 import { STATUS_CODES } from "http";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
@@ -19,21 +19,24 @@ app.register(fastifyCors);
 
 app.post("/subscriptions", {
   schema: {
-    body: z.object ({
+    body: z.object({
       name: z.string(),
       email: z.string().email(),
     }),
   },
 }, (request, reply) => {
-  const { name, email} = request.body
+  const { name, email } = request.body
 
-  return reply.status(201).send({ name, email } )
+  return reply.status(201)
+    .send({
+      name,
+      email
+    })
 
 })
 
 app.listen(
-  {port: 3333}
+  { port: 3333 }
 ).then(() => {
   console.log("HTTP Server is running on port: 3333");
 });
-   
