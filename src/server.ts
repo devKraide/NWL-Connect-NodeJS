@@ -3,10 +3,14 @@ import { fastifyCors } from "@fastify/cors";
 import {
   validatorCompiler,
   serializerCompiler,
-  ZodTypeProvider
+  ZodTypeProvider,
+  jsonSchemaTransform
 } from "fastify-type-provider-zod";
-import { z } from "zod";
-import { STATUS_CODES } from "http";
+import {fastifySwagger} from '@fastify/swagger';
+import {fastifySwaggerUi} from '@fastify/swagger-ui';
+import { subscribeToEventRoute } from "./routes/subscribe-to-event-route";
+
+
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -17,23 +21,23 @@ app.setValidatorCompiler(validatorCompiler);
 app.register(fastifyCors);
 //true = possible to access from any origin => adequate for development 
 
-app.post("/subscriptions", {
-  schema: {
-    body: z.object({
-      name: z.string(),
-      email: z.string().email(),
-    }),
+app.register(fastifySwagger, {
+  openapi: {
+    info: {
+      title: 'NLW Connect',
+      version: '0.0.1'
+    }
   },
-}, (request, reply) => {
-  const { name, email } = request.body
-
-  return reply.status(201)
-    .send({
-      name,
-      email
-    })
-
+  transform : jsonSchemaTransform,
 })
+
+app.register(fastifySwaggerUi, {
+
+    routePrefix: '/docs'
+}
+)
+
+app.register(subscribeToEventRoute);
 
 app.listen(
   { port: 3333 }
