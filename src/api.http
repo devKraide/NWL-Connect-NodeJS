@@ -2,14 +2,19 @@ POST http://localhost:3333/subscriptions
 Content-Type: application/json
 
 {
-  "name":"Nicolas Kraide",
-  "email":"nicolas.kraide@gmail.com"
+  "name":"convidassfdad",
+  "email":"convsidasfadsd@gmail.com",
+  "referrer": "edfea5bd-328c-439f-a725-2da8eb2a3fa3"
 }
 
-###
-
-GET http://localhost:3333/invites/:kraide13
 
 ###
+GET http://localhost:3333/invites/edfea5bd-328c-439f-a725-2da8eb2a3fa3
 
-GET http://localhost:3333/subscribers/:kraide13/ranking/clicks
+
+###
+GET http://localhost:3333/subscribers/edfea5bd-328c-439f-a725-2da8eb2a3fa3/ranking/clicks
+
+
+### 
+GET http://localhost:3333/subscribers/edfea5bd-328c-439f-a725-2da8eb2a3fa3/ranking/count

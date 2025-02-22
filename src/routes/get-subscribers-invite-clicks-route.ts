@@ -21,7 +21,7 @@ export const getSubscribersInviteClicksRoute: FastifyPluginAsyncZod =
           },
         },
       },
-      async (request) => {
+      async request => {
         const { subscriberId } = request.params
 
         const { count } = await getSubscriberInviteClicks({ subscriberId })

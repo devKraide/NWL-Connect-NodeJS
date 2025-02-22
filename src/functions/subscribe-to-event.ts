@@ -20,7 +20,7 @@ export async function subscribeToEvent({
     .where(eq(subscriptions.email, email))
 
   if (subscribers.length > 0) {
-    return { subscriberId: subscribers[0].id }
+     return { subscriberId: subscribers[0].id }
   }
 
   const result = await db
@@ -32,7 +32,7 @@ export async function subscribeToEvent({
     .returning()
 
   if(referrerId) {
-    await redis.zincrby('referrals:ranking', 1, referrerId)
+    await redis.zincrby('referral:ranking', 1, referrerId)
   }
 
   const subscriber = result[0]
