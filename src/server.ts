@@ -10,7 +10,7 @@ import {
 } from "fastify-type-provider-zod";
 import {env} from "./env";
 import { subscribeToEventRoute } from "./routes/subscribe-to-event-route";
-import { accessInviteLinkRoute } from "./routes/acess-invite-link";
+import { accessInviteLinkRoute } from "./routes/access-invite-link";
 
 
 
