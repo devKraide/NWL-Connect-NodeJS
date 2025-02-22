@@ -10,6 +10,7 @@ import {
 } from "fastify-type-provider-zod";
 import {env} from "./env";
 import { subscribeToEventRoute } from "./routes/subscribe-to-event-route";
+import { accessInviteLinkRoute } from "./routes/acess-invite-link";
 
 
 
@@ -39,6 +40,7 @@ app.register(fastifySwaggerUi, {
 )
 
 app.register(subscribeToEventRoute);
+app.register(accessInviteLinkRoute);
 
 app.listen({ port: env.PORT }).then(() => {
   console.log("HTTP Server is running on port: 3333");
