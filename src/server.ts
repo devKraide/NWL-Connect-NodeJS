@@ -12,6 +12,8 @@ import {env} from "./env";
 import { accessInviteLinkRoute } from "./routes/access-invite-link-route";
 import { getSubscribersInviteClicksRoute } from "./routes/get-subscribers-invite-clicks-route";
 import { subscribeToEventRoute } from "./routes/subscribe-to-event-route";
+import { getSubscriberInvitesCount } from "./functions/get-subscriber-invites-count";
+import { getSubscribersInvitesCountRoute } from "./routes/get-subscriber-invites-count-route";
 
 
 
@@ -43,6 +45,7 @@ app.register(fastifySwaggerUi, {
 app.register(subscribeToEventRoute);
 app.register(accessInviteLinkRoute);
 app.register(getSubscribersInviteClicksRoute);
+app.register(getSubscribersInvitesCountRoute);
 
 app.listen({ port: env.PORT }).then(() => {
   console.log("HTTP Server is running on port: 3333");
