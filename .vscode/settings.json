@@ -6,4 +6,7 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports.biome": "explicit"
   },
+  "cSpell.words": [
+    "hincrby"
+  ],
 }
