@@ -14,6 +14,7 @@ import { getSubscribersInviteClicksRoute } from "./routes/get-subscribers-invite
 import { subscribeToEventRoute } from "./routes/subscribe-to-event-route";
 import { getSubscriberInvitesCount } from "./functions/get-subscriber-invites-count";
 import { getSubscribersInvitesCountRoute } from "./routes/get-subscriber-invites-count-route";
+import { getSubscribersRankingPositionRoute } from "./routes/get-subscriber-ranking-position-route";
 
 
 
@@ -46,6 +47,7 @@ app.register(subscribeToEventRoute);
 app.register(accessInviteLinkRoute);
 app.register(getSubscribersInviteClicksRoute);
 app.register(getSubscribersInvitesCountRoute);
+app.register(getSubscribersRankingPositionRoute);
 
 app.listen({ port: env.PORT }).then(() => {
   console.log("HTTP Server is running on port: 3333");
